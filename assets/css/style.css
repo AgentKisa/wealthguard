@@ -1,0 +1,1050 @@
+/* Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: #f4f4f4;
+    /* basic background to see the header */
+    /* height: 200vh; */
+    /* to test scrolling and fixed position */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header Container */
+.header {
+    position: fixed;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1001;
+    width: calc(100% - 64px);
+    max-width: 1596px;
+    padding: 12px 24px;
+}
+
+/* Frosted Glass Background (from Reference) */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 11px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: -1;
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(10px, 2vw, 50px);
+}
+
+/* Left: Logo */
+.header__logo {
+    font-family: 'Manrope', sans-serif;
+    color: #292929;
+    font-size: 28px;
+    font-weight: 800;
+    /* Bold to differentiate */
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.header__logo img {
+    width: clamp(140px, 14vw, 216px);
+    height: auto;
+}
+
+.header__logo:hover {
+    opacity: 0.7;
+}
+
+/* Center: Navigation Menu */
+.header__nav {
+    display: flex;
+    align-items: center;
+}
+
+.header__menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header__menu li {
+    display: flex;
+    align-items: center;
+}
+
+/* Typography styles verbatim from prompt */
+.header__menu li a,
+.header__menu li.separator,
+.header__contact-email {
+    color: #292929;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(11px, 1.0vw, 15px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 113%;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.header__menu li a:hover {
+    opacity: 0.6;
+}
+
+/* Add margin to separator if needed */
+.header__menu li.separator {
+    cursor: default;
+    user-select: none;
+}
+
+/* Right: Contact Block */
+.header__contact {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header__contact-icon {
+    width: 24px;
+    height: 24px;
+    color: #292929;
+}
+
+.header__contact-email:hover {
+    opacity: 0.6;
+}
+
+/* Burger Button */
+.header__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+}
+
+.header__burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #292929;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Burger active animation state */
+.header__burger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.header__burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.header__burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Responsive: < 1280px */
+@media screen and (max-width: 1279px) {
+
+    .header__contact {
+        display: none;
+    }
+
+    .header__nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        background: rgba(246, 242, 238, 0.95);
+        backdrop-filter: blur(15px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .header__nav.active {
+        display: flex;
+    }
+
+    .header__menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        padding: 64px 0 32px 0;
+    }
+
+    .header__menu li.separator {
+        display: none; /* Hide the visual vertical separator on mobile */
+    }
+
+    .header__menu li a {
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .header__burger {
+        display: flex;
+    }
+}
+
+/* =========================================
+   Container Base
+   ========================================= */
+.container {
+    max-width: 1596px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero-section {
+    background: #F6F2EE;
+    /* Sufficient padding to clear the ~80px fixed header and extra space */
+    padding-top: 320px;
+
+}
+
+.hero-section__title {
+    color: #323841;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(60px, 9vw, 100px);
+    /* 150px as requested, fluidly scaling down to prevent overflow */
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80%;
+    position: relative;
+    z-index: 2;
+
+}
+
+.hero-image-block {
+    position: relative;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.hero-image-block img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* centers image nicely */
+}
+
+.hero-labels-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+/* Labels on image */
+.hero-label-left,
+.hero-label-right {
+    color: #292929;
+    font-family: 'Manrope', sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 113%;
+    /* 23.73px */
+    pointer-events: auto;
+}
+
+/* Hero Responsive < 1280px */
+@media screen and (max-width: 1280px) {
+    .hero-section {
+        padding-top: 150px;
+
+    }
+
+    .hero-section__title {
+        font-size: clamp(40px, 7vw, 90px);
+
+    }
+
+    /* Stack labels at the top of the image */
+    .hero-labels-wrapper {
+        position: absolute;
+        top: 15px;
+        /* Position at the top of the image */
+        left: 0;
+        right: 0;
+        transform: none;
+        /* Reset the vertical center translation */
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0;
+        gap: 8px;
+    }
+
+    .hero-image-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-label-left,
+    .hero-label-right {
+        font-size: 16px;
+    }
+
+}
+
+/* =========================================
+   Vision Section
+   ========================================= */
+.vision-section {
+    /* To support the background properly, using the requested linear gradient layered over the image */
+    background: linear-gradient(270deg, #323841 41.67%, rgba(50, 56, 65, 0.00) 153.44%), url('../img/aa8c355598.jpg') center/cover no-repeat;
+    /* Fallback */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* Center vertically */
+    padding: 80px 0;
+}
+
+.vision-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.vision-content {
+    grid-column: 2;
+    margin: 0 auto;
+    max-width: 580px;
+    /* Restrict width to keep text readable and centered */
+    width: 100%;
+}
+
+.vision-title {
+    color: #F6F2EE;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(60px, 7vw, 90px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 110px */
+    margin-bottom: 40px;
+}
+
+.vision-text p {
+    color: #F6F2EE;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* Paragraphs explicitly requested to have a justified alignment based on mockup */
+    text-align: justify;
+}
+
+.vision-text p:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+/* Vision Responsive < 1280px */
+@media screen and (max-width: 1280px) {
+    .vision-container {
+        grid-template-columns: 1fr;
+    }
+
+    .vision-content {
+        grid-column: 1;
+    }
+
+    .vision-section {
+        min-height: auto;
+        padding: 100px 0;
+    }
+
+    .vision-title {
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .vision-text p {
+        text-align: center;
+        /* Centering helps on small mobile screens */
+    }
+}
+
+/* =========================================
+   Our Projects Section
+   ========================================= */
+.projects-section {
+    background: linear-gradient(180deg, #C5BAB4 -2.86%, rgba(197, 186, 180, 0.00) 50%);
+    padding: 120px 0;
+}
+
+.projects-container {
+    display: block;
+    /* Reset back to standard block, grid handles layout */
+}
+
+.projects-title {
+    color: #323841;
+    text-align: left;
+    /* Align with left edge of the grid */
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(60px, 6vw, 111px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 111px */
+    margin: 0;
+}
+
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.project-card {
+    display: block;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Special styling just for the title text node */
+.text-card {
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    /* helps vertically align title with adjacent cards */
+}
+
+.text-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Image cards get an aspect-ratio and hover effects */
+.project-card:not(.text-card) {
+    aspect-ratio: 16 / 9;
+}
+
+.project-card:not(.text-card):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* All 6 cards form a perfect 3-column grid for precise vertical alignment */
+/* 2 gaps of 24px = 48px total gap, divided by 3 items = 16px to subtract per item */
+.project-card:nth-child(n) {
+    width: calc(33.333% - 16px);
+}
+
+/* Composed W.Investment Card Custom Rules */
+.winvest-card {
+    position: relative;
+}
+
+.winvest-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.winvest-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto !important;
+    height: auto !important;
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain !important;
+}
+
+/* Responsive constraints < 1280px */
+@media screen and (max-width: 1280px) {
+    .projects-title {
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    /* Text card spans 100% width on tablet */
+    .project-card:nth-child(1) {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Cards 2-5 span 50% width (2 items per row) */
+    .project-card:nth-child(2),
+    .project-card:nth-child(3),
+    .project-card:nth-child(4),
+    .project-card:nth-child(5) {
+        width: calc(50% - 12px);
+    }
+
+    /* Card 6 (W.Investment) spans 100% */
+    .project-card:nth-child(6) {
+        width: 100%;
+    }
+}
+
+/* Full stack mobile < 768px */
+@media screen and (max-width: 768px) {
+    .projects-grid {
+        gap: 16px;
+    }
+
+    /* Force 100% width on everything */
+    .project-card:nth-child(n) {
+        width: 100%;
+        aspect-ratio: auto;
+        min-height: 200px;
+        /* safeguard */
+    }
+}
+
+/* =========================================
+   Group Investment Section
+   ========================================= */
+.group-section {
+    background: #323841;
+    padding: 120px 0;
+    color: #F6F2EE;
+}
+
+.group-container {
+    display: grid;
+    /* Two equal columns matching the 50/50 visual layout */
+    grid-template-columns: 1fr 1fr;
+    /* 64px horizontal gap between image and text block */
+    gap: 0 64px;
+    align-items: flex-start;
+}
+
+.group-title {
+    grid-column: 2;
+    grid-row: 1;
+    /* Enforces title to be in Row 1 */
+    color: #F6F2EE;
+    text-align: left;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(60px, 6vw, 110px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 110px */
+    margin: 0 0 40px 0;
+    /* Gap between title and text */
+}
+
+.group-image {
+    grid-column: 1;
+    grid-row: 2;
+    /* Row 2 natively aligns top edge with .group-text */
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+.group-text {
+    grid-column: 2;
+    grid-row: 2;
+    width: 600px;
+}
+
+.group-text p {
+    color: #F6F2EE;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(16px, 1.5vw, 22px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    margin: 0 0 24px 0;
+    text-align: justify;
+    /* Justified paragraphs as requested via Figma properties */
+}
+
+.group-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Stack < 1280px */
+@media screen and (max-width: 1280px) {
+    .group-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        /* Switch to vertical gaps primarily */
+    }
+
+    .group-title {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .group-image {
+        grid-column: 1;
+        grid-row: 2;
+        height: auto;
+    }
+
+    .group-text {
+        grid-column: 1;
+        grid-row: 3;
+        width: 100%;
+    }
+
+    .group-text p {
+        text-align: center;
+        /* Generally reads better on mobile than justified block */
+    }
+}
+
+/* =========================================
+   Press Section
+   ========================================= */
+.press-section {
+    position: relative;
+    width: 100%;
+    /* We lock the height to the screen size (max 1080px), and let images scale their width naturally to prevent any cropping! */
+    height: 100vh;
+    max-height: 1080px;
+    min-height: 700px;
+    overflow: hidden;
+    background: #323841;
+    display: flex;
+    align-items: center;
+}
+
+/* The dark translucent layer */
+.press-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #323841;
+    opacity: 0.86;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Wrapper to align text with the site container limits */
+.press-content-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+/* The massive "Press" typography overlapping the animation */
+.press-heading {
+    color: #F6F2EE;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(60px, 8vw, 110px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    margin: 0;
+    pointer-events: none;
+    text-align: left;
+}
+
+/* Infinite flex scroller wrapper */
+.press-scroller {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    /* Inherits section height */
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Wrapping track duplicates */
+.scroller-track {
+    display: flex;
+    height: 100%;
+    /* Inherits scroller height */
+    flex-shrink: 0;
+    animation: scroll-right 90s linear infinite;
+}
+
+/* Height-based image scaling */
+.scroller-image {
+    height: 100%;
+    /* Completely fills the visible vertical space */
+    width: auto;
+    /* Automatically calculates correct width without squishing or cropping! */
+    display: block;
+    max-width: none;
+    flex-shrink: 0;
+}
+
+/* The keyframes for moving right continuously */
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Performance and responsive thresholds */
+@media screen and (max-width: 1280px) {
+    .scroller-track {
+        /* Slower transition ensures better legibility on narrower viewports */
+        animation-duration: 150s;
+    }
+}
+
+/* =========================================
+   Contacts Section
+   ========================================= */
+.contacts-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Make section span full viewport height */
+    min-height: 850px;
+    /* Sensible minimum to prevent crowding */
+    background-image: url('../img/iphone.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Aligns content to bottom */
+    padding-bottom: 64px;
+    /* Clearance from bottom edge */
+    background-color: #323841;
+    /* Fallback */
+}
+
+/* Subtle gradient at the bottom for improved text legibility */
+.contacts-section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    /* Gradient goes up halfway */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Top gradient overlay as requested */
+.contacts-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #323841 -2.86%, rgba(50, 56, 65, 0.00) 50%);
+    opacity: 0.91;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.contacts-container {
+    position: relative;
+    z-index: 2;
+    /* Sit cleanly atop the dark ambient gradient */
+}
+
+.contacts-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    /* Ensures fluid layout on non-desktop screens */
+    gap: 60px;
+}
+
+.contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-decoration: none;
+    color: #F6F2EE;
+    transition: color 0.3s ease;
+}
+
+/* Base icon containment */
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* Forces SVG icons pure white natively based on reference style */
+.contact-icon img {
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
+}
+
+/* Replicating Crystal Planet Hover Effect */
+.contact-link:hover .contact-icon {
+    background-color: #fff;
+    border-color: #fff;
+    transform: translateY(-4px);
+    /* Minor tactile feedback */
+}
+
+.contact-link:hover .contact-icon img {
+    /* Turning the icon black over the white background */
+    filter: brightness(0);
+}
+
+.contact-link:hover .contact-text {
+    color: #fff;
+}
+
+.contact-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+
+    font-weight: 400;
+    line-height: 113%;
+    text-align: center;
+}
+
+/* Contacts Responsiveness */
+@media screen and (max-width: 1280px) {
+    .contacts-list {
+        justify-content: center;
+        gap: 32px 48px;
+        /* Stacks nicely in a grid pattern visually */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contacts-list {
+        /* flex-direction: column; */
+        /* Fully stack on phones */
+        gap: 24px;
+    }
+
+    .contacts-section {
+        padding-bottom: 40px;
+    }
+
+    .contact-text {
+
+        font-size: 14px;
+
+    }
+}
+
+/* =========================================
+   Footer Section
+   ========================================= */
+.footer {
+    background: #323841;
+    padding: 171px 63px 0 63px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Rests the box natively on the bottom */
+}
+
+.footer-box {
+    background: #F6F2EE;
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    /* Added internal padding to keep content off the borders */
+    padding: 80px 80px 40px 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-content {
+    /* Grid enables absolute centering of logo while nav sits left without offset math */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    width: 100%;
+    align-items: center;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-nav-title {
+    color: #292929;
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 22px */
+    margin: 0 0 24px 0;
+}
+
+.footer-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-nav-list a {
+    color: #292929;
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-nav-list a:hover {
+    opacity: 0.6;
+
+}
+
+.footer-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo-img {
+    /* Programmatically shifts any color to the requested #292929 */
+    filter: brightness(0) invert(0.16);
+    height: auto;
+}
+
+.footer-bottom {
+    margin-top: 80px;
+    text-align: center;
+    color: #292929;
+    font-family: 'Manrope', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 17px */
+}
+
+@media screen and (max-width: 1280px) {
+    .footer {
+        padding: 80px 24px 0 24px;
+    }
+
+    .footer-box {
+        padding: 60px 40px 30px 40px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo-container {
+        /* This pushes the logo to the very top above the Navigation */
+        order: -1;
+    }
+
+    .footer-nav {
+        align-items: center;
+    }
+
+    .footer-nav-title {
+        text-align: center;
+    }
+
+    .footer-bottom {
+        margin-top: 60px;
+    }
+}

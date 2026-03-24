@@ -1,0 +1,10 @@
+# Ignore the reference project
+Crystal-Planet-main/
+
+# Standard ignores
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
