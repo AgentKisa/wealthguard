@@ -215,7 +215,8 @@ ul {
     }
 
     .header__menu li.separator {
-        display: none; /* Hide the visual vertical separator on mobile */
+        display: none;
+        /* Hide the visual vertical separator on mobile */
     }
 
     .header__menu li a {
@@ -402,6 +403,8 @@ ul {
 @media screen and (max-width: 1280px) {
     .vision-container {
         grid-template-columns: 1fr;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .vision-content {
@@ -416,6 +419,7 @@ ul {
     .vision-title {
         margin-bottom: 24px;
         text-align: center;
+        font-size: clamp(38px, 12vw, 55px);
     }
 
     .vision-text p {
@@ -527,9 +531,20 @@ ul {
 
 /* Responsive constraints < 1280px */
 @media screen and (max-width: 1280px) {
+
+    .projects-section {
+        padding: 100px 0;
+    }
+
+    .projects-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
     .projects-title {
-        margin-bottom: 24px;
+        margin-bottom: 10px;
         text-align: center;
+        font-size: clamp(38px, 12vw, 55px);
     }
 
     /* Text card spans 100% width on tablet */
@@ -562,7 +577,7 @@ ul {
     .project-card:nth-child(n) {
         width: 100%;
         aspect-ratio: auto;
-        min-height: 200px;
+        /* min-height: 200px; */
         /* safeguard */
     }
 }
@@ -635,10 +650,16 @@ ul {
 
 /* Responsive Stack < 1280px */
 @media screen and (max-width: 1280px) {
+    .group-section {
+        padding: 100px 0;
+    }
+
     .group-container {
         grid-template-columns: 1fr;
         gap: 40px;
         /* Switch to vertical gaps primarily */
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .group-title {
@@ -646,6 +667,7 @@ ul {
         grid-row: 1;
         text-align: center;
         margin-bottom: 0;
+        font-size: clamp(38px, 12vw, 55px);
     }
 
     .group-image {
@@ -1047,4 +1069,616 @@ ul {
     .footer-bottom {
         margin-top: 60px;
     }
+}
+
+/* =========================================================================
+   BENCHMARK HERO SECTION
+   ========================================================================= */
+
+.benchmark-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Background image & gradient overlay */
+.benchmark-hero__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/modern-mall.png') no-repeat center center / cover;
+    z-index: -2;
+}
+
+.benchmark-hero__bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #F6F2EE 0%, rgba(246, 242, 238, 0.00) 100%);
+    z-index: -1;
+}
+
+/* Content Layout */
+.benchmark-hero .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.benchmark-hero .container.h-full {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.benchmark-hero__content {
+    max-width: 550px;
+    padding: 200px 0 80px 0;
+    /* Space for fixed header */
+    text-align: left;
+}
+
+/* Typography */
+.benchmark-hero__title {
+    color: #292929;
+    text-align: left;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(60px, 8vw, 80px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 110px */
+    margin-bottom: 40px;
+}
+
+.benchmark-hero__text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 80px;
+}
+
+.benchmark-hero__text {
+    color: #292929;
+    text-align: left;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(16px, 3vw, 18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+/* Button */
+.benchmark-hero__btn {
+    display: inline-flex;
+    width: 170px;
+    height: 47px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    border-radius: 11px;
+    background: linear-gradient(180deg, #161616 -6.14%, #616161 209.77%);
+    backdrop-filter: blur(8px);
+    color: #F6F2EE;
+    font-family: 'Philosopher', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 21.6px */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    transition: all 0.3s ease;
+}
+
+.benchmark-hero__btn:hover {
+    background: rgba(246, 242, 238, 1);
+    color: #292929;
+}
+
+/* Responsive Benchmark Section */
+@media screen and (max-width: 1279px) {
+    .benchmark-hero .container.h-full {
+        justify-content: center;
+    }
+
+    .benchmark-hero__bg::after {
+        background: linear-gradient(180deg, #F6F2EE 0%, rgba(246, 242, 238, 0.5) 100%);
+    }
+
+    .benchmark-hero__title {
+        font-size: clamp(38px, 10vw, 50px);
+        text-align: center;
+    }
+
+    .benchmark-hero__text {
+        font-size: clamp(16px, 3vw, 16px);
+        text-align: center;
+    }
+
+    .benchmark-hero__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+        padding: 200px 20px 80px 20px;
+    }
+
+    .benchmark-hero__btn {
+        margin: 0 auto;
+    }
+
+    .benchmark-hero__text-group {
+        margin-bottom: 60px;
+    }
+}
+
+/* =========================================================================
+   W.INVESTMENT SECTION
+   ========================================================================= */
+
+.winvestment-section {
+    width: 100%;
+    /* padding-top removed to let image touch the top (header is fixed, image will go under it) */
+    /* padding-bottom: 80px; */
+}
+
+.winvestment-container {
+    max-width: 1596px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Block 1: Image */
+.winvestment-image-block {
+    width: 100%;
+    /* margin-bottom: 40px; */
+}
+
+.winvestment-image-block img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    /* Remove small inline bottom gap */
+    /* Removed border-radius as requested */
+}
+
+/* Block 2: Content Grid */
+.winvestment-content-block {
+    opacity: 0.9;
+    /* Slightly higher opacity for readability compared to the 0.4 prompt */
+    background: linear-gradient(180deg, #F6F2EE -39.18%, rgba(246, 242, 238, 0.00) 62.76%);
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 120px;
+    align-items: start;
+    border-radius: 8px;
+}
+
+.winvestment-title {
+    color: #292929;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(28px, 3vw, 33px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 33px */
+    margin-bottom: 24px;
+}
+
+.winvestment-title .winvestment-subtitle {
+    font-weight: 400;
+    /* Normal weight for "Fund" */
+}
+
+.winvestment-text {
+    color: #292929;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(16px, 3vw, 18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.winvestment-btn {
+    margin-top: 70px;
+    margin-left: 0;
+}
+
+.winvestment-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    /* Align arrow somewhat below title */
+}
+
+/* Responsive W.Investment */
+@media screen and (max-width: 1279px) {
+    .winvestment-content-block {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .winvestment-title {
+        text-align: center;
+    }
+
+    .winvestment-btn {
+        margin: 40px auto 0 auto;
+    }
+
+    .winvestment-arrow img {
+        transform: rotate(90deg);
+        /* Point arrow down on mobile */
+    }
+
+    .winvestment-arrow {
+        margin-top: 0;
+    }
+
+    .winvestment-title {
+        font-size: clamp(28px, 3vw, 33px);
+    }
+
+    .winvestment-text {
+        font-size: clamp(16px, 3vw, 18px);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .winvestment-title {
+        font-size: 28px;
+    }
+
+    .winvestment-text {
+        font-size: 18px;
+    }
+
+    .winvestment-image-block img {
+        min-height: 290px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+/* =========================================================================
+   ROASTERS SECTION
+   ========================================================================= */
+
+.roasters-body {
+    background: #F6F2EE url('../img/fon-roast.png') no-repeat center center / cover;
+    background-attachment: fixed;
+    /* Optional: gives a nice parallax feel to full background */
+}
+
+.roasters-section {
+    width: 100%;
+    padding-top: 140px;
+    /* Space under fixed header */
+    padding-bottom: 0;
+    /* Let the cup overflow the bottom if needed */
+    overflow: hidden;
+    /* Prevent horizontal scrollbars from the protruding cup if it leaks too far right */
+}
+
+.roasters-container {
+    max-width: 1596px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+
+/* Block 1: Geo Locations Scroll */
+.roasters-geo-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 80px;
+    padding-bottom: 20px;
+    /* Space for scrollbar */
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: #292929 transparent;
+}
+
+.roasters-geo-scroll-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.roasters-geo-scroll-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.roasters-geo-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: #292929;
+    border-radius: 6px;
+}
+
+.roasters-geo-block {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    /* Minimum gap to ensure they don't touch */
+}
+
+.geo-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.geo-arrow {
+    margin-top: 10px;
+    /* Align with the city names */
+    width: clamp(16px, 1.5vw, 32px);
+    height: auto;
+    flex-shrink: 1;
+}
+
+.geo-city {
+    height: clamp(24px, 2.5vw, 40px);
+    /* Adjust based on actual SVG height */
+    width: auto;
+    object-fit: contain;
+    object-position: left;
+}
+
+.geo-city--riyadh {
+    height: clamp(35px, 4vw, 45px);
+    /* Specifically larger height */
+    width: clamp(140px, 14vw, 220px);
+    /* Intentionally wide to match the 'stretched' look */
+    /* object-fit: fill;  */
+}
+
+/* Individual tuning for Riyadh */
+.geo-item--riyadh {
+    gap: 10px;
+    /* Set custom gap here */
+}
+
+/* Individual tuning for Hong Kong */
+.geo-item--hongkong {
+    gap: 10px;
+    /* Set custom gap here */
+}
+
+.geo-city--hongkong {
+    height: clamp(28px, 3vw, 45px);
+    /* Custom height for Hong Kong SVG */
+    width: auto;
+}
+
+.geo-text {
+    color: #292929;
+    font-family: "Times New Roman", Times, serif;
+    font-size: clamp(14px, 1.5vw, 17px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* Slightly more readable than 100% for lists */
+    white-space: nowrap;
+    /* Keep text elements like 'Al Wasl' unbroken */
+}
+
+.geo-text strong {
+    font-weight: 700;
+}
+
+.geo-item--empty .geo-text {
+    display: none;
+}
+
+/* Block 2: Info & Cup */
+.roasters-content-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    position: relative;
+    padding-bottom: 100px;
+    /* Space at the bottom before footer */
+}
+
+.roasters-info {
+    max-width: 600px;
+    padding-top: 20px;
+}
+
+.roasters-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 40px;
+}
+
+.roast-main-logo {
+    height: 70px;
+    /* Adjust as necessary */
+    width: auto;
+    object-fit: contain;
+    object-position: left;
+}
+
+.roast-sub-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    object-position: left;
+    margin-left: 8px;
+}
+
+.roasters-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.roasters-text {
+    color: #292929;
+    text-align: justify;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.roasters-image-wrapper {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.roasters-cup {
+    position: absolute;
+    bottom: -105px;
+    right: -300px;
+    width: 2000px;
+    /* Making the canvas gigantic so the inner hand is actually large */
+    max-width: none;
+    /* Override any previous constraints */
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Responsive Roasters */
+@media screen and (max-width: 1279px) {
+    .roasters-container {
+        padding-left: 44px;
+        padding-right: 44px;
+    }
+
+    .roasters-geo-block {
+        justify-content: flex-start;
+        min-width: max-content;
+        /* Ensure items don't wrap, force horizontal scroll */
+        gap: 40px;
+    }
+
+    .geo-arrow {
+        width: 32px;
+        flex-shrink: 0;
+    }
+
+    .geo-city {
+        height: 40px;
+    }
+
+    .roasters-content-block {
+        grid-template-columns: 1fr;
+        padding-bottom: 0;
+        gap: 0;
+    }
+
+    .roasters-info {
+        max-width: 100%;
+        margin-bottom: 0;
+    }
+
+    .roasters-text {
+        text-align: left;
+        /* Justify is hard to read on mobile */
+    }
+
+    /* Move cup under the text */
+    .roasters-image-wrapper {
+        position: relative;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+        margin-top: -210px;
+        overflow: visible;
+    }
+
+    .roasters-cup {
+        position: relative;
+        /* Remove absolute positioning */
+        bottom: auto;
+        right: auto;
+        width: 250%;
+        /* Large enough so the hand portion of the canvas fills the screen */
+        max-width: none;
+        /* No cap — the canvas is huge, but only the hand matters */
+        display: block;
+        margin: 0 auto;
+        transform: translateY(40px) translateX(-15%);
+        /* Offset to center the physical hand, not the canvas */
+    }
+
+    .roasters-section {
+        padding-bottom: 40px;
+        /* Ensure space for transformed cup */
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .geo-block {
+        gap: 20px;
+    }
+
+    .roasters-container {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .roast-main-logo {
+        height: 40px;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: left;
+    }
+
+    .roast-sub-logo {
+        max-width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .roasters-logos {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .benchmark-hero__btn {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .roasters-text {
+        font-size: 16px;
+    }
+
+    .roasters-image-wrapper {
+        margin-top: -100px;
+    }
+
+    /* .roasters-cup {
+        transform: translateY(20px);
+    } */
 }
