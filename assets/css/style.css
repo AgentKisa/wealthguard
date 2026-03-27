@@ -1392,7 +1392,7 @@ ul {
 .roasters-geo-scroll-wrapper {
     width: 100%;
     overflow-x: auto;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     padding-bottom: 20px;
     /* Space for scrollbar */
     /* Custom scrollbar styling */
@@ -1555,7 +1555,7 @@ ul {
 
 .roasters-cup {
     position: absolute;
-    bottom: -105px;
+    bottom: -135px;
     right: -300px;
     width: 2000px;
     /* Making the canvas gigantic so the inner hand is actually large */
