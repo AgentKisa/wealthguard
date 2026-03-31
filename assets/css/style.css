@@ -342,6 +342,12 @@ ul {
         font-size: 16px;
     }
 
+    .hero-image-block img {
+        height: 350px;
+        object-fit: cover;
+        object-position: center;
+    }
+
 }
 
 /* =========================================
@@ -418,13 +424,12 @@ ul {
 
     .vision-title {
         margin-bottom: 24px;
-        text-align: center;
+        text-align: left;
         font-size: clamp(38px, 12vw, 55px);
     }
 
     .vision-text p {
-        text-align: center;
-        /* Centering helps on small mobile screens */
+        text-align: left;
     }
 }
 
@@ -543,14 +548,14 @@ ul {
 
     .projects-title {
         margin-bottom: 10px;
-        text-align: center;
+        text-align: left;
         font-size: clamp(38px, 12vw, 55px);
     }
 
     /* Text card spans 100% width on tablet */
     .project-card:nth-child(1) {
         width: 100%;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     /* Cards 2-5 span 50% width (2 items per row) */
@@ -665,7 +670,7 @@ ul {
     .group-title {
         grid-column: 1;
         grid-row: 1;
-        text-align: center;
+        text-align: left;
         margin-bottom: 0;
         font-size: clamp(38px, 12vw, 55px);
     }
@@ -683,8 +688,7 @@ ul {
     }
 
     .group-text p {
-        text-align: center;
-        /* Generally reads better on mobile than justified block */
+        text-align: left;
     }
 }
 
@@ -1194,7 +1198,7 @@ ul {
 /* Responsive Benchmark Section */
 @media screen and (max-width: 1279px) {
     .benchmark-hero .container.h-full {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .benchmark-hero__bg::after {
@@ -1203,24 +1207,24 @@ ul {
 
     .benchmark-hero__title {
         font-size: clamp(38px, 10vw, 50px);
-        text-align: center;
+        text-align: left;
     }
 
     .benchmark-hero__text {
         font-size: clamp(16px, 3vw, 16px);
-        text-align: center;
+        text-align: left;
     }
 
     .benchmark-hero__content {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: 40px;
         padding: 200px 20px 80px 20px;
     }
 
     .benchmark-hero__btn {
-        margin: 0 auto;
+        margin: 0;
     }
 
     .benchmark-hero__text-group {
@@ -1310,26 +1314,51 @@ ul {
     /* Align arrow somewhat below title */
 }
 
+/* Base animation for desktop (pointing right) */
+@keyframes arrow-point-right {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+}
+
+/* Base animation for mobile (pointing down after rotation) */
+@keyframes arrow-point-down {
+    0%, 100% {
+        transform: rotate(90deg) translateX(0);
+    }
+    50% {
+        transform: rotate(90deg) translateX(15px); /* Translates along the rotated local X-axis, which points down visually */
+    }
+}
+
+.winvestment-arrow img {
+    animation: arrow-point-right 2s ease-in-out infinite;
+}
+
 /* Responsive W.Investment */
 @media screen and (max-width: 1279px) {
     .winvestment-content-block {
         grid-template-columns: 1fr;
         gap: 40px;
         padding: 40px 20px;
-        text-align: center;
+        text-align: left;
     }
 
     .winvestment-title {
-        text-align: center;
+        text-align: left;
     }
 
     .winvestment-btn {
-        margin: 40px auto 0 auto;
+        margin: 40px 0 0 0;
     }
 
     .winvestment-arrow img {
         transform: rotate(90deg);
         /* Point arrow down on mobile */
+        animation: arrow-point-down 2s ease-in-out infinite;
     }
 
     .winvestment-arrow {
@@ -2056,8 +2085,8 @@ ul {
 @media screen and (max-width: 1270px) {
     .crystal-fit-hero__content-wrapper {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
         gap: 60px;
         padding: 140px 20px 60px 20px;
     }
@@ -2066,16 +2095,17 @@ ul {
         max-width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .crystal-fit-hero__title {
         font-size: clamp(38px, 10vw, 56px);
         margin-bottom: 30px;
+        text-align: left;
     }
 
     .crystal-fit-hero__text {
-        text-align: center;
+        text-align: left;
         font-size: 14px;
     }
 
@@ -2085,6 +2115,7 @@ ul {
 
     .crystal-fit-logo-img {
         height: clamp(150px, 25vw, 150px);
+        align-self: flex-start;
     }
 
     .salam-hero__bg {
@@ -2101,8 +2132,8 @@ ul {
 
     .salam-hero__content-wrapper {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
         gap: 60px;
         padding: 140px 20px 60px 20px;
     }
@@ -2111,22 +2142,22 @@ ul {
         max-width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         padding-bottom: 0;
         /* Reset padding alignment on mobile */
     }
 
     .salam-hero__title {
         font-size: clamp(38px, 10vw, 56px);
-        text-align: center;
+        text-align: left;
     }
 
     .salam-hero__subtitle {
-        text-align: center;
+        text-align: left;
     }
 
     .salam-hero__text {
-        text-align: center;
+        text-align: left;
         font-size: 14px;
     }
 
@@ -2136,24 +2167,24 @@ ul {
 
     .salam-hero__right {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         gap: 40px;
         margin-bottom: 0;
     }
 
     .salam-hero__stats {
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: 0;
     }
 
     .salam-hero__stat-title {
-        text-align: center;
-        align-self: center;
+        text-align: left;
+        align-self: flex-start;
         font-size: clamp(28px, 8vw, 42px);
     }
 
     .salam-hero__stat-desc {
-        text-align: center;
+        text-align: left;
     }
 
     .salam-logo-svg {
@@ -2164,8 +2195,8 @@ ul {
 @media screen and (max-width: 1270px) {
     .flipping-fund-hero__content-wrapper {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
         gap: 40px;
         padding: 140px 20px 60px 20px;
     }
@@ -2174,11 +2205,12 @@ ul {
         max-width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .flipping-fund-hero__title {
         font-size: clamp(38px, 10vw, 56px);
+        text-align: left;
     }
 
     .flipping-fund-hero__title.line-1 {
@@ -2193,16 +2225,17 @@ ul {
 
     .flipping-fund-hero__subtitle {
         font-size: 16px;
+        text-align: left;
     }
 
     .flipping-fund-hero__title-group {
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: 30px;
     }
 
     .flipping-fund-hero__title-row {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         gap: 10px;
     }
 
@@ -2211,17 +2244,19 @@ ul {
     }
 
     .flipping-fund-hero__text {
-        text-align: center;
+        text-align: left;
         font-size: 14px;
     }
 
     .flipping-fund-logo-svg {
-        align-self: center;
+        align-self: flex-start;
         height: 80px;
     }
 
     .benchmark-hero__content {
         max-width: 100%;
+        align-items: flex-start;
+        text-align: left;
     }
 }
 
